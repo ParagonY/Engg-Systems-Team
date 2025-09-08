@@ -63,7 +63,7 @@ public class MyFirstWindow {
         emergencyPanel.add(new JLabel("Emergency", SwingConstants.CENTER), BorderLayout.NORTH);
         JButton emergencyStop = new JButton("EMERGENCY STOP");
         emergencyStop.setBackground(new Color(220, 20, 60));
-        emergencyStop.setForeground(Color.WHITE);
+        emergencyStop.setForeground(Color.BLACK);
         emergencyStop.setOpaque(true);
         emergencyStop.setFocusPainted(false);
         JPanel emergencyBtnWrap = new JPanel(new FlowLayout());
@@ -76,7 +76,7 @@ public class MyFirstWindow {
         resetPanel.add(new JLabel("System Control", SwingConstants.CENTER), BorderLayout.NORTH);
         JButton resetButton = new JButton("RESET SYSTEM");
         resetButton.setBackground(new Color(30, 144, 255));
-        resetButton.setForeground(Color.WHITE);
+        resetButton.setForeground(Color.BLACK);
         resetButton.setOpaque(true);
         resetButton.setFocusPainted(false);
         JPanel resetBtnWrap = new JPanel(new FlowLayout());
