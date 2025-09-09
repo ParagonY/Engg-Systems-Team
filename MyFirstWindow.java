@@ -5,14 +5,33 @@ import javax.swing.border.TitledBorder;
 public class MyFirstWindow {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Bridge control System");
-        frame.setSize(700, 550);
-        frame.setLayout(new GridLayout(7, 1)); // includes Reset section
+        frame.setSize(720, 620);
+        frame.setLayout(new GridLayout(9, 1)); // +1 row for Mode display
 
-        // ===== Status Labels =====
+        // ===== Mode / Status Labels =====
+        JLabel modeLabel         = new JLabel("Mode: AUTOMATIC (locked)", SwingConstants.CENTER);
         JLabel bridgeStatusLabel = new JLabel("Bridge: Down");
         JLabel carStatusLabel    = new JLabel("Car Light: Red");
         JLabel pedStatusLabel    = new JLabel("Pedestrian Light: Red");
         JLabel boatStatusLabel   = new JLabel("Boat Light: Red");
+
+        // ===== Mode Panel =====
+        JPanel modePanel = new JPanel(new BorderLayout());
+        modePanel.add(modeLabel, BorderLayout.CENTER);
+        frame.add(modePanel);
+
+        // ===== Activation Panel =====
+        JPanel activationPanel = new JPanel(new BorderLayout());
+        activationPanel.add(new JLabel("Activation", SwingConstants.CENTER), BorderLayout.NORTH);
+        JButton activateButton = new JButton("ACTIVATE");
+        activateButton.setBackground(new Color(46, 204, 113));
+        activateButton.setForeground(Color.BLACK);
+        activateButton.setOpaque(true);
+        activateButton.setFocusPainted(false);
+        JPanel activateWrap = new JPanel(new FlowLayout());
+        activateWrap.add(activateButton);
+        activationPanel.add(activateWrap, BorderLayout.CENTER);
+        frame.add(activationPanel);
 
         // ===== Bridge Panel =====
         JPanel bridgePanel = new JPanel(new BorderLayout());
@@ -98,6 +117,7 @@ public class MyFirstWindow {
         frame.add(statusPanel);
 
         // ===== State =====
+        final boolean[] systemActive    = { false }; // false = Automatic/locked, true = Manual
         final boolean[] bridgeUp        = { false };
         final boolean[] carGreen        = { false };
         final boolean[] pedGreen        = { false };
@@ -107,6 +127,7 @@ public class MyFirstWindow {
         // ===== Interlocks =====
         Runnable applyInterlocks = () -> {
             if (emergencyActive[0]) {
+                modeLabel.setText("Mode: EMERGENCY (locked)");
                 liftButton.setEnabled(false);
                 downButton.setEnabled(false);
                 greenButton.setEnabled(false);
@@ -115,33 +136,47 @@ public class MyFirstWindow {
                 redPedButton.setEnabled(false);
                 greenBoatButton.setEnabled(false);
                 redBoatButton.setEnabled(false);
+                activateButton.setEnabled(false);
+                resetButton.setEnabled(true);  // allow reset from emergency
                 return;
             }
 
+            if (!systemActive[0]) {
+                modeLabel.setText("Mode: AUTOMATIC (locked)");
+                liftButton.setEnabled(false);
+                downButton.setEnabled(false);
+                greenButton.setEnabled(false);
+                redButton.setEnabled(false);
+                greenPedButton.setEnabled(false);
+                redPedButton.setEnabled(false);
+                greenBoatButton.setEnabled(false);
+                redBoatButton.setEnabled(false);
+                activateButton.setEnabled(true); // can move to Manual
+                resetButton.setEnabled(false);   // no need to reset while already automatic
+                return;
+            }
+
+            // Manual (active) mode
+            modeLabel.setText("Mode: MANUAL (interlocked)");
             boolean trafficActive = carGreen[0] || pedGreen[0];
 
-            // car/ped green disabled when bridge is UP
             greenButton.setEnabled(!bridgeUp[0]);
             greenPedButton.setEnabled(!bridgeUp[0]);
-
-            // boat green only when bridge is UP and no traffic is moving
             greenBoatButton.setEnabled(bridgeUp[0] && !trafficActive);
-
-            // lift only when bridge is DOWN and no traffic is moving
             liftButton.setEnabled(!bridgeUp[0] && !trafficActive);
-
-            // down only if boat light is not green
             downButton.setEnabled(!boatGreen[0]);
-
-            // reds always enabled (unless emergency)
             redButton.setEnabled(true);
             redPedButton.setEnabled(true);
             redBoatButton.setEnabled(true);
+
+            activateButton.setEnabled(false);
+            resetButton.setEnabled(true); // <-- enable reset during manual so you can return to Automatic
         };
 
-        // Unified reset to initial defaults
+        // Unified reset to initial defaults (Automatic/locked)
         Runnable resetToDefaults = () -> {
             emergencyActive[0] = false;
+            systemActive[0]    = false;   // back to AUTOMATIC mode
             bridgeUp[0]  = false;
             carGreen[0]  = false;
             pedGreen[0]  = false;
@@ -156,11 +191,16 @@ public class MyFirstWindow {
         };
 
         // ===== Logic =====
+        // Activate -> Manual mode
+        activateButton.addActionListener(e -> {
+            systemActive[0] = true;
+            applyInterlocks.run();
+        });
+
         // Bridge
         liftButton.addActionListener(e -> {
             bridgeUp[0] = true;
             bridgeStatusLabel.setText("Bridge: Up");
-            // safety: force traffic to red
             carGreen[0] = false; pedGreen[0] = false;
             carStatusLabel.setText("Car Light: Red");
             pedStatusLabel.setText("Pedestrian Light: Red");
@@ -222,7 +262,6 @@ public class MyFirstWindow {
         // Emergency Stop
         emergencyStop.addActionListener(e -> {
             emergencyActive[0] = true;
-            // flip everything to red but keep bridge position
             carGreen[0] = false; pedGreen[0] = false; boatGreen[0] = false;
             carStatusLabel.setText("Car Light: Red");
             pedStatusLabel.setText("Pedestrian Light: Red");
@@ -230,10 +269,10 @@ public class MyFirstWindow {
             applyInterlocks.run();
         });
 
-        // Reset System -> back to original default state
+        // Reset -> return to AUTOMATIC (locked)
         resetButton.addActionListener(e -> resetToDefaults.run());
 
-        // Start in the exact original state
+        // Start in AUTOMATIC (locked)
         resetToDefaults.run();
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
