@@ -142,7 +142,7 @@ public class MyFirstWindow {
             }
 
             if (!systemActive[0]) {
-                modeLabel.setText("Mode: AUTOMATIC (locked)");
+                modeLabel.setText("Mode: AUTOMATIC");
                 liftButton.setEnabled(false);
                 downButton.setEnabled(false);
                 greenButton.setEnabled(false);
@@ -157,7 +157,7 @@ public class MyFirstWindow {
             }
 
             // Manual (active) mode
-            modeLabel.setText("Mode: MANUAL (interlocked)");
+            modeLabel.setText("Mode: MANUAL");
             boolean trafficActive = carGreen[0] || pedGreen[0];
 
             greenButton.setEnabled(!bridgeUp[0]);
