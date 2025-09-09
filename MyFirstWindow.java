@@ -9,7 +9,7 @@ public class MyFirstWindow {
         frame.setLayout(new GridLayout(9, 1)); // +1 row for Mode display
 
         // ===== Mode / Status Labels =====
-        JLabel modeLabel         = new JLabel("Mode: AUTOMATIC (locked)", SwingConstants.CENTER);
+        JLabel modeLabel         = new JLabel("Mode: AUTOMATIC", SwingConstants.CENTER);
         JLabel bridgeStatusLabel = new JLabel("Bridge: Down");
         JLabel carStatusLabel    = new JLabel("Car Light: Red");
         JLabel pedStatusLabel    = new JLabel("Pedestrian Light: Red");
@@ -127,7 +127,7 @@ public class MyFirstWindow {
         // ===== Interlocks =====
         Runnable applyInterlocks = () -> {
             if (emergencyActive[0]) {
-                modeLabel.setText("Mode: EMERGENCY (locked)");
+                modeLabel.setText("Mode: EMERGENCY");
                 liftButton.setEnabled(false);
                 downButton.setEnabled(false);
                 greenButton.setEnabled(false);
