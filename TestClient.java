@@ -29,7 +29,10 @@ public class TestClient {
 public static void main(String[] args) throws IOException {
     TestClient client = new TestClient();
     client.startConnection("127.0.0.1", 1111);
-    String response = client.sendMessage("hello server");
+    while(true){
+            String response = client.sendMessage("hellow and what have you with this");
     System.err.println(response);
+    }
+
 }
 }
