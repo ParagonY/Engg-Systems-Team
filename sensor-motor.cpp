@@ -11,8 +11,8 @@ extern "C" {
 }
 
 // --- Pin definitions ---
-#define TRIG_PIN GPIO_NUM_2   
-#define ECHO_PIN GPIO_NUM_4   
+#define TRIG_PIN GPIO_NUM_13  
+#define ECHO_PIN GPIO_NUM_16  
 #define DIR_PIN  GPIO_NUM_5   // Motor direction pin foward-reverse 1 or HIGH = forward 0 or LOW = reverse
 #define PWM_PIN  GPIO_NUM_12  // Motor PWM control pin the speed of the motor range 0-255 0 = stop 255 = full speed
 
