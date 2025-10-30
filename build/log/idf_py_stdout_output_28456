@@ -1,0 +1,110 @@
+Command: C:\Users\gurya\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Users\gurya\esp\v5.5.1\esp-idf\tools/idf_monitor.py -p COM5 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 C:\ENGG3000\Engg-Systems-Team\build\Engg-Systems-Team.elf C:\ENGG3000\Engg-Systems-Team\build\bootloader\bootloader.elf --force-color -m 'C:\Users\gurya\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Users\gurya\esp\v5.5.1\esp-idf\tools\idf.py' '-p' 'COM5'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET�ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15916
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Oct 30 2025 15:48:36[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (31) boot: chip revision: v3.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (37) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (41) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (58) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (81) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=197d8h (104408) map[0m
+[0;32mI (124) esp_image: segment 1: paddr=00029800 vaddr=3ffb0000 size=03eech ( 16108) load[0m
+[0;32mI (130) esp_image: segment 2: paddr=0002d6f4 vaddr=40080000 size=02924h ( 10532) load[0m
+[0;32mI (134) esp_image: segment 3: paddr=00030020 vaddr=400d0020 size=888ach (559276) map[0m
+[0;32mI (326) esp_image: segment 4: paddr=000b88d4 vaddr=40082924 size=154e8h ( 87272) load[0m
+[0;32mI (360) esp_image: segment 5: paddr=000cddc4 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (372) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (372) boot: Disabling RNG early entropy source...[0m
+[0;32mI (383) cpu_start: Multicore app[0m
+[0;32mI (391) cpu_start: Pro cpu start user code[0m
+[0;32mI (391) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (391) app_init: Application information:[0m
+[0;32mI (391) app_init: Project name:     Engg-Systems-Team[0m
+[0;32mI (396) app_init: App version:      7fa9a00-dirty[0m
+[0;32mI (400) app_init: Compile time:     Oct 30 2025 16:01:13[0m
+[0;32mI (406) app_init: ELF file SHA256:  6917ea819...[0m
+[0;32mI (410) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (414) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (418) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (422) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (426) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (432) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (437) heap_init: At 3FFB84B8 len 00027B48 (158 KiB): DRAM[0m
+[0;32mI (442) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (447) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (453) heap_init: At 40097E0C len 000081F4 (32 KiB): IRAM[0m
+[0;32mI (460) spi_flash: detected chip: generic[0m
+[0;32mI (462) spi_flash: flash io: dio[0m
+[0;33mW (465) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (478) main_task: Started on CPU0[0m
+[0;32mI (488) main_task: Calling app_main()[0m
+[0;32mI (518) AP_CLIENT: ESP32 AP mode starting up...[0m
+[0;32mI (538) wifi:wifi driver task: 3ffc0460, prio:23, stack:6656, core=0[0m
+[0;32mI (558) wifi:wifi firmware version: 14da9b7[0m
+[0;32mI (558) wifi:wifi certification version: v7.0[0m
+[0;32mI (558) wifi:config NVS flash: enabled[0m
+[0;32mI (558) wifi:config nano formatting: disabled[0m
+[0;32mI (558) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (568) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (568) wifi:Init management short buffer num: 32[0m
+[0;32mI (568) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (578) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (578) wifi:Init static rx buffer num: 10[0m
+[0;32mI (588) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (588) wifi_init: rx ba win: 6[0m
+[0;32mI (588) wifi_init: accept mbox: 6[0m
+[0;32mI (598) wifi_init: tcpip mbox: 32[0m
+[0;32mI (598) wifi_init: udp mbox: 6[0m
+[0;32mI (598) wifi_init: tcp mbox: 6[0m
+[0;32mI (598) wifi_init: tcp tx win: 5760[0m
+[0;32mI (608) wifi_init: tcp rx win: 5760[0m
+[0;32mI (608) wifi_init: tcp mss: 1440[0m
+[0;32mI (608) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (618) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (628) phy_init: phy_version 4861,b71b5ad,Aug  5 2025,11:16:06[0m
+[0;32mI (708) wifi:mode : softAP (6c:c8:40:4d:f5:b9)[0m
+[0;32mI (828) wifi:Total power save buffer number: 16[0m
+[0;32mI (828) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (828) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (828) AP_CLIENT: Access Point creation initiated. SSID: ESP32_UI_NETWORK, IP: 192.168.4.1[0m
+[0;32mI (828) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (848) AP_CLIENT: Access Point started successfully.[0m
+[0;32mI (848) AP_CLIENT: Access Point ready. Please connect your PC to 'ESP32_UI_NETWORK'.[0m
+[0;32mI (858) main_task: Returned from app_main()[0m
+[0;32mI (5858) AP_CLIENT: Attempting connection to PC Server: 192.168.4.2:5050[0m
+[0;33mW (66108) AP_CLIENT: Connection failed. Server not yet ready? errno 113[0m
+[0;32mI (76108) AP_CLIENT: Attempting connection to PC Server: 192.168.4.2:5050[0m
+[0;32mI (93538) wifi:new:<1,1>, old:<1,1>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (93538) wifi:station: 14:13:33:73:ad:2d join, AID=1, bgn, 40U[0m
+[0;32mI (93558) AP_CLIENT: PC connected to Access Point.[0m
+[0;32mI (93718) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.2[0m
+[0;32mI (93918) wifi:<ba-add>idx:2 (ifx:1, 14:13:33:73:ad:2d), tid:0, ssn:16, winSize:64[0m
+[0;33mW (106608) AP_CLIENT: Connection failed. Server not yet ready? errno 113[0m
+[0;32mI (116608) AP_CLIENT: Attempting connection to PC Server: 192.168.4.2:5050[0m
+[0;33mW (135108) AP_CLIENT: Connection failed. Server not yet ready? errno 113[0m
+[0;32mI (145108) AP_CLIENT: Attempting connection to PC Server: 192.168.4.2:5050[0m
+[0;32mI (145108) AP_CLIENT: Successfully connected to PC Server![0m
+[0;32mI (145108) AP_CLIENT: Sent 32 bytes: Hello from the ESP32 AP Client![0m
+
+[0;32mI (145118) AP_CLIENT: Received 23 bytes: unrecognised greeting[0m
+
+[0;32mI (155128) AP_CLIENT: Attempting connection to PC Server: 192.168.4.2:5050[0m

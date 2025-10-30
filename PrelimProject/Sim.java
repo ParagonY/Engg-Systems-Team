@@ -24,6 +24,8 @@ public class Sim extends Thread{
 
 public void startListener(int port)  throws IOException {
     System.out.println("works here");
+        InetAddress inetAddress = InetAddress.getByName("192.168.4.2");
+        //serverSocket = new ServerSocket(port,5,inetAddress);
         serverSocket = new ServerSocket(port);
         
         while(true){
