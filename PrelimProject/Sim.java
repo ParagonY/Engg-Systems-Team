@@ -7,14 +7,14 @@ public class Sim extends Thread{
     private ServerSocket serverSocket;
     private Socket clientSocket;
     private PrintWriter out;
-    private BufferedReader in;
+    public BufferedReader in;
     
     Sim(){
     }
 
     public void run(){
         try {
-            startListener(1111);
+            startListener(5050);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -25,23 +25,25 @@ public class Sim extends Thread{
 public void startListener(int port)  throws IOException {
     System.out.println("works here");
         serverSocket = new ServerSocket(port);
-        clientSocket = serverSocket.accept();
+        
         while(true){
+        clientSocket = serverSocket.accept();
         out = new PrintWriter(clientSocket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        
         String greeting = in.readLine();
         
-            if(greeting != null){
-                if ("hello server".equals(greeting)) {
+        if(greeting != null){
+            if ("Hello".equals(greeting)) {
                 out.println("hello client");
+                greeting = null;
             }
             else {
                 out.println("unrecognised greeting");
+                System.out.println("WORKS");
+                greeting = null;
             }
-            greeting = null;
-            }
-
-
+        }
         }
            
     }

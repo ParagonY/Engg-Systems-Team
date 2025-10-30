@@ -9,7 +9,10 @@ public class Main extends Thread{
         messageConnection.start();
         int test = 0;
         while(true){
-            System.out.println("            "+test);
+            if(messageConnection.in != null){
+                System.out.println(messageConnection.in);
+            }
+            
             test++;
         }
     }

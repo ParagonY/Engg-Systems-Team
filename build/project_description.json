@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "Engg-Systems-Team",
-    "project_version":    "5b1840b-dirty",
+    "project_version":    "4d6f624-dirty",
     "project_path":       "C:/ENGG3000/Engg-Systems-Team",
     "idf_path":           "C:/Users/gurya/esp/v5.5.1/esp-idf",
     "build_dir":          "C:/ENGG3000/Engg-Systems-Team/build",
@@ -1221,7 +1221,7 @@
             "type": "LIBRARY",
             "lib": "__idf_main",
             "reqs": [],
-            "priv_reqs": [ "freertos", "log", "esp_system", "cxx" ],
+            "priv_reqs": [ "freertos", "log", "esp_system", "cxx", "nvs_flash", "esp_netif", "esp_event", "esp_wifi", "lwip" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "C:/ENGG3000/Engg-Systems-Team/build/esp-idf/main/libmain.a",
@@ -2908,7 +2908,7 @@
             "dir": "C:/ENGG3000/Engg-Systems-Team/main",
             "lib": "__idf_main",
             "reqs": [],
-            "priv_reqs": [ "freertos", "log", "esp_system", "cxx" ],
+            "priv_reqs": [ "freertos", "log", "esp_system", "cxx", "nvs_flash", "esp_netif", "esp_event", "esp_wifi", "lwip" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "include_dirs": [ "." ]
