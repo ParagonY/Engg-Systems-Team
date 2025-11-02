@@ -177,12 +177,12 @@ static void tcp_client_task(void *pvParameters) {
         }
         
     cleanup:
-        if (s != -1) {
-            close(s);
-        }
-        if (res != NULL) {
-            freeaddrinfo(res);
-        }
+        // if (s != -1) {
+        //     close(s);
+        // }
+        // if (res != NULL) {
+        //     freeaddrinfo(res);
+        // }
 
         // Wait 10 seconds before trying again (if disconnected or failed)
         vTaskDelay(pdMS_TO_TICKS(10000));

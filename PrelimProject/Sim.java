@@ -4,15 +4,19 @@ import java.net.*;
 import java.io.*;
 
 public class Sim extends Thread{
-    private ServerSocket serverSocket;
-    private Socket clientSocket;
-    private PrintWriter out;
-    public BufferedReader in;
+    public volatile ServerSocket serverSocket;
+    public volatile Socket clientSocket;
+    public volatile PrintWriter out;
+    public volatile BufferedReader in;
+    public volatile boolean connected;
+    public volatile String message;
+    public volatile String greeting;
     
     Sim(){
     }
 
     public void run(){
+        connected = false;
         try {
             startListener(5050);
         } catch (IOException e) {
@@ -30,18 +34,19 @@ public void startListener(int port)  throws IOException {
         
         while(true){
         clientSocket = serverSocket.accept();
+        connected = true;
         out = new PrintWriter(clientSocket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         
-        String greeting = in.readLine();
-        
+        greeting = in.readLine();
+        //System.out.println(greeting);
         if(greeting != null){
             if ("Hello".equals(greeting)) {
-                out.println("hello client");
+                //out.println("hello client");
                 greeting = null;
             }
             else {
-                out.println("unrecognised greeting");
+                //out.println("unrecognised greeting");
                 System.out.println("WORKS");
                 greeting = null;
             }
@@ -49,7 +54,7 @@ public void startListener(int port)  throws IOException {
         }
            
     }
-    
+
     public void StopSocket() throws IOException {
         in.close();
         out.close();
