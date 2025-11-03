@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "Engg-Systems-Team",
-    "project_version":    "e9bbfbe-dirty",
+    "project_version":    "a0c39a1-dirty",
     "project_path":       "C:/ENGG3000/Engg-Systems-Team",
     "idf_path":           "C:/Users/gurya/esp/v5.5.1/esp-idf",
     "build_dir":          "C:/ENGG3000/Engg-Systems-Team/build",

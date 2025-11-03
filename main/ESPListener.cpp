@@ -282,120 +282,6 @@
 
 
 
-// // ESP-IDF (FreeRTOS) code for reading an HC-SR04 Ultrasonic Sensor
-// // Trig Pin: GPIO 21 (Output)
-// // Echo Pin: GPIO 35 (Input)
-
-// #include <stdio.h>
-// #include "freertos/FreeRTOS.h"
-// #include "freertos/task.h"
-// #include "esp_log.h"
-// #include "driver/gpio.h"
-// #include "esp_timer.h" // For microsecond-accurate timing
-
-// static const char *TAG = "ULTRASONIC";
-
-// // --- PIN DEFINITIONS ---
-// #define ULTRASONIC_TRIG_PIN GPIO_NUM_21
-// #define ULTRASONIC_ECHO_PIN GPIO_NUM_35
-
-// // --- SPEED OF SOUND (cm/µs) ---
-// // Speed of sound in air is approx 343m/s or 0.0343 cm/µs
-// #define SOUND_SPEED_CM_PER_US 0.0343f
-
-// /**
-//  * @brief Measures the distance using the HC-SR04 sensor.
-//  * * @return float Distance in centimeters, or -1.0 if timeout/error occurs.
-//  */
-// float measure_distance() {
-//     // 1. Ensure the trigger is low initially
-//     gpio_set_level(ULTRASONIC_TRIG_PIN, 0);
-//     // Short delay to settle
-//     esp_rom_delay_us(2); 
-
-//     // 2. Generate 10µs pulse on the TRIG pin
-//     gpio_set_level(ULTRASONIC_TRIG_PIN, 1);
-//     esp_rom_delay_us(10);
-//     gpio_set_level(ULTRASONIC_TRIG_PIN, 0);
-
-//     int64_t start_time = 0;
-//     int64_t end_time = 0;
-    
-//     // --- Pulse Measurement ---
-    
-//     // 3. Wait for the ECHO pin to go high (start of the pulse)
-//     // Timeout set to 20ms (20000 µs) for safety
-//     int64_t pulse_start_timeout = esp_timer_get_time() + 20000; 
-//     while (gpio_get_level(ULTRASONIC_ECHO_PIN) == 0) {
-//         if (esp_timer_get_time() > pulse_start_timeout) {
-//             ESP_LOGW(TAG, "Echo pulse start timeout.");
-//             return -1.0f; 
-//         }
-//     }
-//     start_time = esp_timer_get_time();
-
-//     // 4. Wait for the ECHO pin to go low (end of the pulse)
-//     // Max measurement time for 4m is about 25,000 µs
-//     int64_t pulse_end_timeout = start_time + 30000;
-//     while (gpio_get_level(ULTRASONIC_ECHO_PIN) == 1) {
-//         if (esp_timer_get_time() > pulse_end_timeout) {
-//             ESP_LOGW(TAG, "Echo pulse end timeout (Max range exceeded?).");
-//             return -1.0f;
-//         }
-//     }
-//     end_time = esp_timer_get_time();
-    
-//     // 5. Calculate Duration
-//     int64_t duration_us = end_time - start_time;
-
-//     // 6. Calculate Distance
-//     // Distance = (Duration * Speed of Sound) / 2 (since it's round trip)
-//     float distance_cm = (float)duration_us * SOUND_SPEED_CM_PER_US / 2.0f;
-
-//     return distance_cm;
-// }
-
-// /**
-//  * @brief FreeRTOS task to continuously monitor the ultrasonic sensor.
-//  */
-// void ultrasonic_task(void *pvParameters) {
-//     while (1) {
-//         float distance = measure_distance();
-        
-//         if (distance > 0.0f) {
-//             // Print the distance, limiting to two decimal places
-//             ESP_LOGI(TAG, "Distance: %.2f cm", distance);
-//         }
-        
-//         // Wait for 500ms before the next measurement
-//         vTaskDelay(pdMS_TO_TICKS(500));
-//     }
-// }
-
-// /**
-//  * @brief Initializes GPIOs and starts the monitoring task.
-//  */
-// extern "C" void app_main(void) {
-//     // 1. Configure Trigger Pin (Output)
-//     gpio_set_direction(ULTRASONIC_TRIG_PIN, GPIO_MODE_OUTPUT);
-
-//     // 2. Configure Echo Pin (Input with pull-down just in case)
-//     gpio_set_direction(ULTRASONIC_ECHO_PIN, GPIO_MODE_INPUT);
-//     gpio_pullup_dis(ULTRASONIC_ECHO_PIN); // Disable pull-up
-//     gpio_pulldown_dis(ULTRASONIC_ECHO_PIN); // For GPIO35, this is not needed as it's input-only, but good practice
-
-//     ESP_LOGI(TAG, "Ultrasonic sensor initialized (TRIG: 21, ECHO: 35).");
-
-//     // 3. Create the FreeRTOS task
-//     xTaskCreate(ultrasonic_task, "ultrasonic_monitor", 
-//                 2048,           // Stack size
-//                 NULL,           // Parameters
-//                 5,              // Priority
-//                 NULL);          // Task handle
-// }
-
-
-
 
 
 
@@ -467,11 +353,43 @@ extern "C" void app_main(void)
     //     vTaskDelay(pdMS_TO_TICKS(1000));
     // }
 
-
-
-
     setup_pins();
     bridge_sequence();
+
+    bool bridgeLifted = false;
+    bool empty = false;
+    int carDistance = -1;
+
+    if(bridgeLifted == false){
+        if(read_distance_cm(sensors[0])<30 || read_distance_cm(sensors[1])<30){
+            LEDChangeState("STOPCARS") //red for cars and red for boats
+            while(empty == false){
+                if(carDistance>30){
+                    carDistance = read_distance_cm(sensors[4]);
+                    empty = true;
+                }
+                vTaskDelay(pdMS_TO_TICKS(1000));
+            }
+            LEDChangeState("FLASHING"); //flashing for boats and red for cars
+            motorChangeState("LIFT"); // will turn LED green for boats when done lifting
+        }
+    }
+
+    //Logic Code for incoming boat
+    if(bridgeLifted == true){
+        if(read_distance_cm(sensors[3])>30){
+            LEDChangeState("FLASHING");
+            motorChangeState("DOWN");
+            LEDChangeState("GREEN")
+            
+        }
+    }
+    
+
+
+
+
+
 }
 
 
