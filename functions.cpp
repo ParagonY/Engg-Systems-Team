@@ -71,36 +71,36 @@ void setup_pins() {
 
 
 float read_distance_cm(UltrasonicSensor sensor) {
+   // Send a short trigger pulse
     gpio_set_level(sensor.trig, 0);
     esp_rom_delay_us(2);
     gpio_set_level(sensor.trig, 1);
     esp_rom_delay_us(10);
     gpio_set_level(sensor.trig, 0);
 
-    int64_t timeout_us = 30000; // 30ms max wait (~5m distance)
+    // Wait for echo to start (timeout after 30ms)
+    int timeout = 30000;
+    while (gpio_get_level(sensor.echo) == 0 && timeout-- > 0) {
+        esp_rom_delay_us(1);
+    }
+    if (timeout <= 0) return -1;  // No echo start detected
+
     int64_t start_time = esp_timer_get_time();
 
-    // Wait for echo high
-    while (gpio_get_level(sensor.echo) == 0) {
-        if (esp_timer_get_time() - start_time > timeout_us) {
-            return -1; // timeout
-        }
+    // Wait for echo to end
+    timeout = 30000;
+    while (gpio_get_level(sensor.echo) == 1 && timeout-- > 0) {
+        esp_rom_delay_us(1);
     }
+    if (timeout <= 0) return -1;  // No echo end detected
 
-    int64_t pulse_start = esp_timer_get_time();
+    int64_t end_time = esp_timer_get_time();
 
-    // Wait for echo low
-    while (gpio_get_level(sensor.echo) == 1) {
-        if (esp_timer_get_time() - pulse_start > timeout_us) {
-            return -1; // timeout
-        }
-    }
+    // Calculate distance in cm
+    float duration = (float)(end_time - start_time);
+    float distance_cm = (duration * 0.0343f) / 2.0f;
 
-    int64_t pulse_end = esp_timer_get_time();
-    float distance = (pulse_end - pulse_start) * 0.0343f / 2.0f;
-
-    printf("[%s] Distance: %.2f cm\n", sensor.name, distance);
-    return distance;
+    return distance_cm;
 }
 
 
