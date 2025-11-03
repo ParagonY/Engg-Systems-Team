@@ -10,6 +10,20 @@
 
 static const char *TAG = "FUNCTIONS";
 
+// ===== LED Pin Declarations =====
+    // --- South LEDs ---
+#define LED_SOUTH_RED    GPIO_NUM_19
+#define LED_SOUTH_GREEN  GPIO_NUM_26
+    // --- North LEDs ---
+#define LED_NORTH_RED    GPIO_NUM_22
+#define LED_NORTH_GREEN  GPIO_NUM_27
+    // --- East LEDs ---
+#define LED_EAST_RED     GPIO_NUM_23
+#define LED_EAST_GREEN   GPIO_NUM_32
+    // --- West LEDs ---
+#define LED_WEST_RED     GPIO_NUM_25
+#define LED_WEST_GREEN   GPIO_NUM_33
+
 // Motor pin declartion 
 #define DIR_PIN  GPIO_NUM_5
 #define PWM_PIN  GPIO_NUM_12
@@ -74,8 +88,68 @@ void motor_set(int speed, int dir) {
 
 
 void LEDChangeState(std::string a){
-    
+    if(a == "GREENB"){
+        //green for boats
+        ESP_LOGI(TAG, "LED changed to GREENB");
+        gpio_set_level(LED_NORTH_GREEN, 1);
+        gpio_set_level(LED_SOUTH_GREEN, 1);
+        gpio_set_level(LED_NORTH_RED, 0);
+        gpio_set_level(LED_SOUTH_RED, 0);
+        gpio_set_level(LED_EAST_GREEN, 0);
+        gpio_set_level(LED_EAST_RED, 1);
+        gpio_set_level(LED_WEST_RED, 1);
+        gpio_set_level(LED_WEST_GREEN, 0);
+    }
+
+     if(a == "GREENC"){
+        //green for cars
+        ESP_LOGI(TAG, "LED changed to GREENC");
+        gpio_set_level(LED_NORTH_GREEN, 0);
+        gpio_set_level(LED_SOUTH_GREEN, 0);
+        gpio_set_level(LED_NORTH_RED, 1);
+        gpio_set_level(LED_SOUTH_RED, 1);
+        gpio_set_level(LED_EAST_GREEN, 1);
+        gpio_set_level(LED_EAST_RED, 0);
+        gpio_set_level(LED_WEST_RED, 0);
+        gpio_set_level(LED_WEST_GREEN, 1);
+    }
+
+    if(a == "REDA"){
+        //red for all
+        ESP_LOGI(TAG, "LED changed to REDA");
+        gpio_set_level(LED_NORTH_GREEN, 0);
+        gpio_set_level(LED_SOUTH_GREEN, 0);
+        gpio_set_level(LED_NORTH_RED, 1);
+        gpio_set_level(LED_SOUTH_RED, 1);
+        gpio_set_level(LED_EAST_GREEN, 0);
+        gpio_set_level(LED_EAST_RED, 1);
+        gpio_set_level(LED_WEST_RED, 1);
+        gpio_set_level(LED_WEST_GREEN, 0);
+    }
+
+    if(a == "FLASHING"){
+        //flashes for boats card on red
+        ESP_LOGI(TAG, "LED changed to FLASHING");
+        gpio_set_level(LED_NORTH_GREEN, 0);
+        gpio_set_level(LED_SOUTH_GREEN, 0);
+        gpio_set_level(LED_EAST_GREEN, 0);
+        gpio_set_level(LED_EAST_RED, 1);
+        gpio_set_level(LED_WEST_RED, 1);
+        gpio_set_level(LED_WEST_GREEN, 0);
+        
+       for(int i = 0; i < 10; i++){
+            gpio_set_level(LED_NORTH_RED, 1);
+            gpio_set_level(LED_SOUTH_RED, 1);
+            vTaskDelay(pdMS_TO_TICKS(500));
+            gpio_set_level(LED_NORTH_RED, 0);
+            gpio_set_level(LED_SOUTH_RED, 0);
+            vTaskDelay(pdMS_TO_TICKS(500));
+        }
+    }
 }
+
+
+
 void motorChangeState(std::string a){
     if(a == "LIFT"){
         motor_set(0,1);
@@ -113,6 +187,29 @@ void setup_pins() {
         gpio_reset_pin(sensors[i].echo);
         gpio_set_direction(sensors[i].echo, GPIO_MODE_INPUT);
     }
+// Set up LED pins
+    // --- South LEDs ---
+    gpio_reset_pin(LED_SOUTH_RED);
+    gpio_set_direction(LED_SOUTH_RED, GPIO_MODE_OUTPUT);
+    gpio_reset_pin(LED_SOUTH_GREEN);
+    gpio_set_direction(LED_SOUTH_GREEN, GPIO_MODE_OUTPUT);
+    // --- North LEDs ---
+    gpio_reset_pin(LED_NORTH_RED);
+    gpio_set_direction(LED_NORTH_RED, GPIO_MODE_OUTPUT);
+    gpio_reset_pin(LED_NORTH_GREEN);
+    gpio_set_direction(LED_NORTH_GREEN, GPIO_MODE_OUTPUT);
+    // --- East LEDs ---
+    gpio_reset_pin(LED_EAST_RED);
+    gpio_set_direction(LED_EAST_RED, GPIO_MODE_OUTPUT);
+    gpio_reset_pin(LED_EAST_GREEN);
+    gpio_set_direction(LED_EAST_GREEN, GPIO_MODE_OUTPUT);
+    // --- West LEDs ---
+    gpio_reset_pin(LED_WEST_RED);
+    gpio_set_direction(LED_WEST_RED, GPIO_MODE_OUTPUT);
+    gpio_reset_pin(LED_WEST_GREEN);
+    gpio_set_direction(LED_WEST_GREEN, GPIO_MODE_OUTPUT);
+
+
 // Setup motor control pins
     gpio_reset_pin(DIR_PIN);
     gpio_set_direction(DIR_PIN, GPIO_MODE_OUTPUT);
