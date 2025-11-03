@@ -1,5 +1,6 @@
 #pragma once
 #include "driver/gpio.h"
+#include <string>
 
 struct UltrasonicSensor {       // Struct to hold ultrasonic sensor pin configuration allows us in main to define multiple sensors easily 
     gpio_num_t trig;            
@@ -16,3 +17,5 @@ float read_distance_cm(UltrasonicSensor sensor);
 void motor_control(bool openBridge);
 void bridge_sequence();
 bool check_bridge_clear();
+void motorChangeState(std::string a);
+void LEDChangeState(std::string a);

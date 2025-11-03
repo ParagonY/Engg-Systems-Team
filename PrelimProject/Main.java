@@ -22,7 +22,7 @@ public class Main extends Thread {
             }
             test++;
 
-            try { Thread.sleep(1000); } catch (InterruptedException e) {}
+            //try { Thread.sleep(1000); } catch (InterruptedException e) {}
         }
     }
 }
