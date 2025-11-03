@@ -1,0 +1,10 @@
+Command: ninja all
+CMake Error at C:/Users/gurya/esp/v5.5.1/esp-idf/tools/cmake/component.cmake:318 (message):
+  Include directory 'C:/ENGG3000/Engg-Systems-Team/main/functions.cpp' is not
+  a directory.
+Call Stack (most recent call first):
+  C:/Users/gurya/esp/v5.5.1/esp-idf/tools/cmake/component.cmake:493 (__component_add_include_dirs)
+  main/CMakeLists.txt:2 (idf_component_register)
+
+
+ninja: error: rebuilding 'build.ninja': subcommand failed

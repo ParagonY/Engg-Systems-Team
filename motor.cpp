@@ -1,13 +1,7 @@
-extern "C" {
-    #include "driver/gpio.h"
-    #include "driver/ledc.h"
-    #include "esp_log.h"
-}
-
-#define TAG "MOTOR_CTRL"
 
 #define DIR_PIN   GPIO_NUM_5
 #define PWM_PIN   GPIO_NUM_12
+
 #define PWM_FREQ  20000
 #define PWM_RES   LEDC_TIMER_8_BIT
 #define PWM_TIMER LEDC_TIMER_0
@@ -49,6 +43,26 @@ void motor_set(int speed, int dir) {
     int duty = 255 - speed; // FIT0441 inverted logic
     ledc_set_duty(LEDC_LOW_SPEED_MODE, PWM_CH, duty);
     ledc_update_duty(LEDC_LOW_SPEED_MODE, PWM_CH);
+}
+
+void motorChangeState(string a){
+    if(a == "LIFT"){
+        motor_set(0,1);
+        vTaskDelay(pdMS_TO_TICKS(3000));
+        motor_set(255,0);
+        LEDChangeState("GREENB");
+        }
+    
+    if(a == "DOWN"){
+        motor_set(0,0);
+        vTaskDelay(pdMS_TO_TICKS(3000));
+        motor_set(255,0);
+        LEDChangeState("GREENC");
+    }
+    if(a == "STOP"){
+        motor_set(255,0);
+        LEDChangeState("REDA");
+    }
 }
 
 void motor_stop() {
