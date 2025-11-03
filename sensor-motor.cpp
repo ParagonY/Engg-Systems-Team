@@ -1,7 +1,5 @@
 
-// 
-// Working sensor code as of 3/11/2025
-//
+#include <stdio.h>
 
 extern "C" {
     #include "freertos/FreeRTOS.h"
