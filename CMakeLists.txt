@@ -11,5 +11,5 @@ include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 project(${PROJECT_NAME})
 
 
-idf_component_register(SRCS "main.cpp" "functions.cpp"
-                       INCLUDE_DIRS ".")
+# idf_component_register(SRCS "sensor-motor.cpp" "main.cpp" "functions.cpp"
+#                        INCLUDE_DIRS ".")

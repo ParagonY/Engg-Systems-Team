@@ -1,0 +1,563 @@
+Command: C:\Users\gurya\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Users\gurya\esp\v5.5.1\esp-idf\tools/idf_monitor.py -p COM5 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 C:\ENGG3000\Engg-Systems-Team\build\Engg-Systems-Team.elf C:\ENGG3000\Engg-Systems-Team\build\bootloader\bootloader.elf --force-color -m 'C:\Users\gurya\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Users\gurya\esp\v5.5.1\esp-idf\tools\idf.py' '-p' 'COM5'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15916
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Nov  3 2025 17:44:49[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (31) boot: chip revision: v3.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (37) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (41) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (58) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (81) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=0a078h ( 41080) map[0m
+[0;32mI (102) esp_image: segment 1: paddr=0001a0a0 vaddr=3ffb0000 size=023f8h (  9208) load[0m
+[0;32mI (106) esp_image: segment 2: paddr=0001c4a0 vaddr=40080000 size=03b78h ( 15224) load[0m
+[0;32mI (112) esp_image: segment 3: paddr=00020020 vaddr=400d0020 size=13f3ch ( 81724) map[0m
+[0;32mI (141) esp_image: segment 4: paddr=00033f64 vaddr=40083b78 size=09438h ( 37944) load[0m
+[0;32mI (156) esp_image: segment 5: paddr=0003d3a4 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (163) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (163) boot: Disabling RNG early entropy source...[0m
+[0;32mI (175) cpu_start: Multicore app[0m
+[0;32mI (183) cpu_start: Pro cpu start user code[0m
+[0;32mI (183) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (183) app_init: Application information:[0m
+[0;32mI (183) app_init: Project name:     Engg-Systems-Team[0m
+[0;32mI (188) app_init: App version:      b29630a-dirty[0m
+[0;32mI (192) app_init: Compile time:     Nov  3 2025 17:44:32[0m
+[0;32mI (197) app_init: ELF file SHA256:  c865ec685...[0m
+[0;32mI (202) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (205) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (209) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (213) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (217) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (224) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (228) heap_init: At 3FFB2CC0 len 0002D340 (180 KiB): DRAM[0m
+[0;32mI (234) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (239) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (245) heap_init: At 4008CFB0 len 00013050 (76 KiB): IRAM[0m
+[0;33mW (251) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig[0m
+[0;32mI (263) spi_flash: detected chip: generic[0m
+[0;32mI (266) spi_flash: flash io: dio[0m
+[0;33mW (269) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (282) main_task: Started on CPU0[0m
+[0;32mI (292) main_task: Calling app_main()[0m
+[0;32mI (292) ULTRASONIC: Ultrasonic sensor initialized (TRIG: 21, ECHO: 35).[0m
+[0;32mI (292) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (292) main_task: Returned from app_main()[0m
+[0;32mI (792) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (1292) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (1792) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (2292) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (2792) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (3292) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (3792) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (4292) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (4792) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (5292) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (5792) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (6292) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (6792) ULTRASONIC: Distance: 2.66 cm[0m
+[0;32mI (7292) ULTRASONIC: Distance: 1.66 cm[0m
+[0;32mI (7792) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (8292) ULTRASONIC: Distance: 19.31 cm[0m
+[0;32mI (8792) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (9292) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (9792) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (10292) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (10792) ULTRASONIC: Distance: 19.31 cm[0m
+[0;32mI (11292) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (11792) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (12292) ULTRASONIC: Distance: 22.81 cm[0m
+[0;33mW (12812) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (13332) ULTRASONIC: Echo pulse start timeout.[0m
+[0;32mI (13832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (14332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (14832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (15332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (15832) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (16332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (16832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (17332) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (17832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (18332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (18832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (19332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (19832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (20332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (20832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (21332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (21832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (22332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (22832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (23332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (23832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (24332) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (24832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (25332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (25832) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (26332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (26832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (27332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (27832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (28332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (28832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (29332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (29832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (30332) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (30832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (31332) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (31832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (32332) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (32832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (33332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (33832) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (34332) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (34832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (35332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (35832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (36332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (36832) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (37332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (37832) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (38332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (38832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (39332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (39832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (40332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (40832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (41332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (41832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (42332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (42832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (43332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (43832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (44332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (44832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (45332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (45832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (46332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (46832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (47332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (47832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (48332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (48832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (49332) ULTRASONIC: Distance: 18.97 cm[0m
+[0;32mI (49832) ULTRASONIC: Distance: 18.97 cm[0m
+[0;32mI (50332) ULTRASONIC: Distance: 18.97 cm[0m
+[0;32mI (50832) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (51332) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (51832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (52332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (52832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (53332) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (53832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (54332) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (54832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (55332) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (55832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (56332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (56832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (57332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (57832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (58332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (58832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (59332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (59832) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (60332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (60832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (61332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (61832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (62332) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (62832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (63332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (63832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (64332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (64832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (65332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (65832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (66332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (66832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (67332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (67832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (68332) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (68832) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (69332) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (69832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (70332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (70832) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (71332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (71832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (72332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (72832) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (73332) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (73832) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (74332) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (74832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (75332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (75832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (76332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (76832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (77332) ULTRASONIC: Distance: 18.97 cm[0m
+[0;32mI (77832) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (78332) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (78832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (79332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (79832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (80332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (80832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (81332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (81832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (82332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (82832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (83332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (83832) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (84332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (84832) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (85332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (85832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (86332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (86832) ULTRASONIC: Distance: 20.58 cm[0m
+[0;32mI (87332) ULTRASONIC: Distance: 20.58 cm[0m
+[0;32mI (87832) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (88332) ULTRASONIC: Distance: 19.31 cm[0m
+[0;32mI (88832) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (89332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (89832) ULTRASONIC: Distance: 20.58 cm[0m
+[0;32mI (90332) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (90832) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (91332) ULTRASONIC: Distance: 19.31 cm[0m
+[0;32mI (91832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (92332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (92832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (93332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (93832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (94332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (94832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (95332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (95832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (96332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (96832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (97332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (97832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (98332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (98832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (99332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (99832) ULTRASONIC: Distance: 20.58 cm[0m
+[0;32mI (100332) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (100832) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (101332) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (101832) ULTRASONIC: Distance: 20.58 cm[0m
+[0;32mI (102332) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (102832) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (103332) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (103832) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (104332) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (104832) ULTRASONIC: Distance: 20.58 cm[0m
+[0;32mI (105332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (105832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (106332) ULTRASONIC: Distance: 19.31 cm[0m
+[0;32mI (106832) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (107332) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (107832) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (108332) ULTRASONIC: Distance: 19.29 cm[0m
+[0;32mI (108832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (109332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (109832) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (110332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (110832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (111332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (111832) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (112332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (112832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (113332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (113832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (114332) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (114832) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (115332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (115832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (116332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (116832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (117332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (117832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (118332) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (118832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (119332) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (119832) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (120332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (120832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (121332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (121832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (122332) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (122832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (123332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (123832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (124332) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (124832) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (125332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (125832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (126332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (126832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (127332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (127832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (128332) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (128832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (129332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (129832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (130332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (130832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (131332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (131832) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (132332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (132832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (133332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (133832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (134332) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (134832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (135332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (135832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (136332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (136832) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (137332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (137832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (138332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (138832) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (139332) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (139832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (140332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (140832) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (141332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (141832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (142332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (142832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (143332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (143832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (144332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (144832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (145332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (145832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (146332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (146832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (147332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (147832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (148332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (148832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (149332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (149832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (150332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (150832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (151332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (151832) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (152332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (152832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (153332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (153832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (154332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (154832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (155332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (155832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (156332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (156832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (157332) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (157832) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (158332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (158832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (159332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (159832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (160332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (160832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (161332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (161832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (162332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (162832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (163332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (163832) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (164332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (164832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (165332) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (165832) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (166332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (166832) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (167332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (167832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (168332) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (168832) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (169332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (169832) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (170332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (170832) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (171332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (171832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (172332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (172832) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (173332) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (173832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (174332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (174832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (175332) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (175832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (176332) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (176832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (177332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (177832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (178332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (178832) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (179332) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (179832) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (180332) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (180832) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (181332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (181832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (182332) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (182832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (183332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (183832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (184332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (184832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (185332) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (185832) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (186332) ULTRASONIC: Distance: 20.27 cm[0m
+[0;33mW (186852) ULTRASONIC: Echo pulse start timeout.[0m
+[0;32mI (187352) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (187852) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (188352) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (188852) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (189352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (189852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (190352) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (190852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (191352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (191852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (192352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (192852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (193352) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (193852) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (194352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (194852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (195352) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (195852) ULTRASONIC: Distance: 18.97 cm[0m
+[0;32mI (196352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (196852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (197352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (197852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (198352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (198852) ULTRASONIC: Distance: 18.97 cm[0m
+[0;32mI (199352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (199852) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (200352) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (200852) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (201352) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (201852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (202352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (202852) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (203352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (203852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (204352) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (204852) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (205352) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (205852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (206352) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (206852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (207352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (207852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (208352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (208852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (209352) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (209852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (210352) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (210852) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (211352) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (211852) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (212352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (212852) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (213352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (213852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (214352) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (214852) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (215352) ULTRASONIC: Distance: 22.81 cm[0m
+[0;32mI (215852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (216352) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (216852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (217352) ULTRASONIC: Distance: 20.27 cm[0m
+[0;32mI (217852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (218352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (218852) ULTRASONIC: Distance: 21.56 cm[0m
+[0;32mI (219352) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (219852) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (220352) ULTRASONIC: Distance: 20.25 cm[0m
+[0;32mI (220852) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (221352) ULTRASONIC: Distance: 22.79 cm[0m
+[0;32mI (221852) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (222352) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (222852) ULTRASONIC: Distance: 21.54 cm[0m
+[0;32mI (223352) ULTRASONIC: Distance: 22.79 cm[0m
+[0;33mW (223872) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (224392) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (224912) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (225432) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (225952) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (226472) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (226992) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (227512) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (228032) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (228552) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (229072) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (229592) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (230112) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (230632) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (231152) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (231672) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (232192) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (232712) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (233232) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (233752) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (234272) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (234792) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (235312) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (235832) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (236352) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (236872) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (237392) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (237912) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (238432) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (238952) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (239472) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (239992) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (240512) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (241032) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (241552) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (242072) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (242592) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (243112) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (243632) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (244152) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (244672) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (245192) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (245712) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (246232) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (246752) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (247272) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (247792) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (248312) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (248832) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (249352) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (249872) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (250392) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (250912) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (251432) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (251952) ULTRASONIC: Echo pulse start timeout.[0m
+[0;33mW (252472) ULTRASONIC: Echo pulse start timeout.[0m
