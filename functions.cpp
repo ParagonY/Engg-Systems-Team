@@ -6,6 +6,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_rom_sys.h"
+#include "esp_mac.h"
 
 static const char *TAG = "FUNCTIONS";
 
@@ -21,7 +22,10 @@ static const char *TAG = "FUNCTIONS";
 
 UltrasonicSensor sensors[4] = {
 // trig,      echo,       name
-    {GPIO_NUM_,  GPIO_NUM_, ""},
+    {GPIO_NUM_13,  GPIO_NUM_16, "BS"},
+    {GPIO_NUM_14,  GPIO_NUM_17, "BN"},
+    {GPIO_NUM_15,  GPIO_NUM_34, "Underbridge"},
+    {GPIO_NUM_21,  GPIO_NUM_35, "Car"},
 };
 
 
@@ -30,7 +34,7 @@ void setup_pins() {
     ESP_LOGI(TAG, "Setting up pins...");
 
 // Setup ultrasonic sensor pins
-      for (int i = 0; i < NUM_SENSORS; i++) {
+      for (int i = 0; i < 4; i++) {
         gpio_set_direction(sensors[i].trig, GPIO_MODE_OUTPUT);
         gpio_set_direction(sensors[i].echo, GPIO_MODE_INPUT);
     }
@@ -67,19 +71,33 @@ void setup_pins() {
 
 
 float read_distance_cm(UltrasonicSensor sensor) {
-    gpio_set_level(sensor.trig, 0); // Ensure trigger is low gets no false readings
-    esp_rom_delay_us(2);  // Wait for 2 microseconds
-    gpio_set_level(sensor.trig, 1); // Set trigger high to send pulse
-    esp_rom_delay_us(10); // Wait for 10 microseconds
-    gpio_set_level(sensor.trig, 0); // Set trigger low again
+    gpio_set_level(sensor.trig, 0);
+    esp_rom_delay_us(2);
+    gpio_set_level(sensor.trig, 1);
+    esp_rom_delay_us(10);
+    gpio_set_level(sensor.trig, 0);
 
-    while (gpio_get_level(sensor.echo) == 0);
-    int64_t start = esp_timer_get_time();
+    int64_t timeout_us = 30000; // 30ms max wait (~5m distance)
+    int64_t start_time = esp_timer_get_time();
 
-    while (gpio_get_level(sensor.echo) == 1);
-    int64_t end = esp_timer_get_time();
+    // Wait for echo high
+    while (gpio_get_level(sensor.echo) == 0) {
+        if (esp_timer_get_time() - start_time > timeout_us) {
+            return -1; // timeout
+        }
+    }
 
-    float distance = (end - start) * 0.0343f / 2.0f;
+    int64_t pulse_start = esp_timer_get_time();
+
+    // Wait for echo low
+    while (gpio_get_level(sensor.echo) == 1) {
+        if (esp_timer_get_time() - pulse_start > timeout_us) {
+            return -1; // timeout
+        }
+    }
+
+    int64_t pulse_end = esp_timer_get_time();
+    float distance = (pulse_end - pulse_start) * 0.0343f / 2.0f;
 
     printf("[%s] Distance: %.2f cm\n", sensor.name, distance);
     return distance;
@@ -87,8 +105,10 @@ float read_distance_cm(UltrasonicSensor sensor) {
 
 
 
+
+
 void motor_control(bool openBridge) {
-    ESP_LOGI(TAG, openBridge ? "Opening bridge..." : "Closing bridge...");
+    ESP_LOGI(TAG, "%s", openBridge ? "Opening bridge..." : "Closing bridge...");
 
     gpio_set_level(DIR_PIN, openBridge ? 1 : 0);
 
@@ -112,29 +132,32 @@ void motor_control(bool openBridge) {
 void bridge_sequence() {
     ESP_LOGI(TAG, "Starting bridge sequence...");
 //checks the boat sensors for a boat
-    float frontDistance = read_distance_cm(sensors[0]); 
-    float backDistance  = read_distance_cm(sensors[1]); 
-    ESP_LOGI(TAG, "sensorname distance: %.2f cm, sensorname distance: %.2f cm", frontDistance, backDistance);
+    float North = read_distance_cm(sensors[0]); 
+    float South  = read_distance_cm(sensors[1]); 
+    ESP_LOGI(TAG, "sensorname distance: %.2f cm, sensorname distance: %.2f cm", North, South);
 
 // If a boat is detected within 30 cm, initiate bridge sequence
-    if ((frontDistance > 0 && frontDistance < 30.0f || backDistance  > 0 && backDistance  < 30.0f)) {
+    if ((North > 0 && North < 30.0f) || (South > 0 && South < 30.0f)) {
         ESP_LOGI(TAG, "Boat detected! Stopping traffic and preparing bridge...");
-        check_bridge_clear():
+        motor_control(true);
+        vTaskDelay(pdMS_TO_TICKS(8000));// Wait for boat to pass
+        motor_control(false); // Close bridge
+        /*
+        check_bridge_clear();
         //need to add LED functionality here
             
-        if(check_bridge_clear() == true){
+        if(check_bridge_clear() == true){  
             motor_control(true); // Open bridge
             vTaskDelay(pdMS_TO_TICKS(8000));// Wait for boat to pass
             motor_control(false); // Close bridge
             ESP_LOGI(TAG, "Bridge sequence complete — traffic may resume.");
         }
-
-       
+        */
     }         
 }
 
 
-
+/*
 bool check_bridge_clear() {
     ESP_LOGI(TAG, "Checking if bridge is clear..."); 
 // Continuously monitor car sensors until no car is detected
@@ -143,7 +166,7 @@ bool check_bridge_clear() {
         float leftDistance  = read_distance_cm(sensors[2]);  // Left sensor
         float rightDistance = read_distance_cm(sensors[3]);  // Right sensor
         // Check if cars are present
-        bool leftSide  = (leftDistance  > xamount && leftDistance  < yamount);
+        bool leftSide  = (leftDistance  > xamount && leftDistance  < yamount); // Adjust xamount and yamount to a proper number just there for a place holder
         bool rightSide = (rightDistance > xamount && rightDistance < yamount);
 
         if (leftSide && !rightSide) {
@@ -173,3 +196,5 @@ bool check_bridge_clear() {
         
    
 }
+*/
+

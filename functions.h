@@ -1,4 +1,5 @@
 #pragma once
+#include "driver/gpio.h"
 
 struct UltrasonicSensor {       // Struct to hold ultrasonic sensor pin configuration allows us in main to define multiple sensors easily 
     gpio_num_t trig;            
