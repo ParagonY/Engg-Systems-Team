@@ -2,6 +2,41 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "TestClient1",
+      "request": "launch",
+      "mainClass": "PrelimProject.TestClient1",
+      "projectName": "Engg-Systems-Team_c99eb0fa"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "PrelimProject.Main",
+      "projectName": "Engg-Systems-Team_c99eb0fa"
+    },
+    {
+      "type": "java",
+      "name": "RemoteGUI",
+      "request": "launch",
+      "mainClass": "PrelimProject.RemoteGUI",
+      "projectName": "Engg-Systems-Team_c99eb0fa"
+    },
+    {
+      "type": "java",
+      "name": "TestClient",
+      "request": "launch",
+      "mainClass": "TestClient",
+      "projectName": "Engg-Systems-Team_c99eb0fa"
+    },
+    {
+      "type": "java",
+      "name": "MyFirstWindow",
+      "request": "launch",
+      "mainClass": "MyFirstWindow",
+      "projectName": "Engg-Systems-Team_c99eb0fa"
+    },
+    {
       "type": "gdbtarget",
       "request": "attach",
       "name": "Eclipse CDT GDB Adapter"
