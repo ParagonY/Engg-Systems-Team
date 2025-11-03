@@ -71,6 +71,11 @@ void motor_set(int speed, int dir) {
 }
 
 
+
+
+void LEDChangeState(std::string a){
+    
+}
 void motorChangeState(std::string a){
     if(a == "LIFT"){
         motor_set(0,1);
